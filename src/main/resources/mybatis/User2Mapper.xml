@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ctcc.module.user2.mapper.User2Mapper">
+
+    <select id="select" parameterType="cn.ctcc.module.user2.bean.User2" resultType="cn.ctcc.module.user2.bean.User2">
+        select * from tb_user where id =#{id}
+    </select>
+
+    <insert id="insert" parameterType="cn.ctcc.module.user2.bean.User2">
+      insert into tb_user(username,password,phone,email,created,updated) values(#{username},#{password},#{phone},#{email},#{created},#{updated})
+
+    </insert>
+
+   <select id="selectListByPage" parameterType="cn.ctcc.util.PageUtil" resultType="cn.ctcc.module.user2.bean.User2">
+       SELECT  * FROM tb_user WHERE username like '%${entity.username}%' limit #{start},#{rows}
+   </select>
+
+    <select id="selectTotalCount" parameterType="cn.ctcc.util.PageUtil" resultType="Integer">
+        SELECT  count(1) FROM tb_user WHERE username like '%${entity.username}%'
+    </select>
+
+</mapper>

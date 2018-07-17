@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ctcc.module.user1.mapper.UserMapper">
+
+    <select id="findUserById" parameterType="String" resultType="cn.ctcc.module.user1.bean.User">
+        select * from tb_user where id =#{id}
+    </select>
+
+    <insert id="addUser" parameterType="cn.ctcc.module.user1.bean.User">
+      insert into tb_user(username,password,phone,email,created,updated) values(#{username},#{password},#{phone},#{email},#{created},#{updated})
+
+    </insert>
+
+    <delete id="delUserById" parameterType="String">
+       delete  from tb_user where id =#{id}
+    </delete>
+
+    <update id="updateUserByid" parameterType="cn.ctcc.module.user1.bean.User">
+      update tb_user set username=#{username},updated=#{updated} where id=#{id}
+    </update>
+
+</mapper>
